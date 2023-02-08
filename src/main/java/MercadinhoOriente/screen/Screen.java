@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Eduardo
  */
 public class Screen extends javax.swing.JFrame {
-    
+
     private final Scanner scan = new Scanner(System.in);
 
     /**
@@ -493,34 +493,34 @@ public class Screen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        
+
         System.exit(0);
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonEditarFechamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarFechamentoActionPerformed
-        
+
         jDesktopPaneMain.setVisible(false);
         jDesktopPaneTelas.setVisible(true);
         jInternalFrameEditar.setVisible(true);
     }//GEN-LAST:event_jButtonEditarFechamentoActionPerformed
 
     private void jButtonFecharCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharCaixaActionPerformed
-        
+
         jDesktopPaneMain.setVisible(false);
         jDesktopPaneTelas.setVisible(true);
         jInternalFrameFechamento.setVisible(true);
-        
+
     }//GEN-LAST:event_jButtonFecharCaixaActionPerformed
 
     private void jButtonVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarActionPerformed
-        
+
         jDesktopPaneMain.setVisible(false);
         jDesktopPaneTelas.setVisible(true);
         jInternalFrameVisualizar.setVisible(true);
     }//GEN-LAST:event_jButtonVisualizarActionPerformed
 
     private void jButtonFechaVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFechaVoltarActionPerformed
-        
+
         jDesktopPaneTelas.setVisible(false);
         jInternalFrameFechamento.setVisible(false);
         jDesktopPaneMain.setVisible(true);
@@ -535,7 +535,7 @@ public class Screen extends javax.swing.JFrame {
     }//GEN-LAST:event_jInternalFrameFechamentoHierarchyChanged
 
     private void jButtonVisuVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisuVoltarActionPerformed
-        
+
         jDesktopPaneTelas.setVisible(false);
         jInternalFrameVisualizar.setVisible(false);
         jDesktopPaneMain.setVisible(true);
@@ -559,7 +559,7 @@ public class Screen extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldFeriasActionPerformed
 
     private void jButtonEditarVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarVoltarActionPerformed
-        
+
         jDesktopPaneTelas.setVisible(false);
         jInternalFrameVisualizar.setVisible(false);
         jDesktopPaneMain.setVisible(true);
@@ -578,33 +578,33 @@ public class Screen extends javax.swing.JFrame {
     }//GEN-LAST:event_jInternalFrameEditarPropertyChange
 
     private void jButtonRegistrarFechoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarFechoActionPerformed
-        
+
         String dia = (String) jComboBoxDia.getSelectedItem();
         int day = Integer.valueOf(dia);
-        
+
         String mes = (String) jComboBoxMes.getSelectedItem();
         int month = Integer.valueOf(mes);
-        
+
         String turno = (String) jComboBoxTurn.getSelectedItem();
         boolean turn;
-        
+
         if (turno.equalsIgnoreCase("manha")) {
             turn = true;
         } else {
             turn = false;
         }
-        
+
         String ferias = jTextFieldFerias.getText();
         double billing = Double.valueOf(ferias);
-        
+
         String cartao = jTextFieldVendaCartão.getText();
         double saleCard = Double.parseDouble(cartao);
-        
+
         String despesa = jTextFieldDespesa.getText();
         double expense = Double.parseDouble(despesa);
-        
+
         DAO dao = new DAO();
-        
+
         try {
             dao.closing(day, month, turn, billing, saleCard, expense);
             JOptionPane.showMessageDialog(rootPane, "Caixa fechado com sucesso!");
@@ -613,41 +613,40 @@ public class Screen extends javax.swing.JFrame {
             jComboBoxTurn.setSelectedIndex(0);
             jTextFieldFerias.setText("");
             jTextFieldVendaCartão.setText("");
-            
-            
+
             jTextFieldDespesa.setText("");
         } catch (IOException ex) {
             Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 
     }//GEN-LAST:event_jButtonRegistrarFechoActionPerformed
 
     private void jComboBoxDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDiaActionPerformed
-        
+
 
     }//GEN-LAST:event_jComboBoxDiaActionPerformed
 
     private void jButtonRegistrarEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarEditActionPerformed
-        
+
         String dia = (String) jComboBoxEditDia.getSelectedItem();
         int day = Integer.valueOf(dia);
-        
+
         String mes = (String) jComboBoxEditMes.getSelectedItem();
         int month = Integer.valueOf(mes);
-        
+
         String turno = (String) jComboBoxEditTurn.getSelectedItem();
         boolean turn;
-        
+
         if (turno.equalsIgnoreCase("manha")) {
             turn = true;
         } else {
             turn = false;
         }
-        
+
         String itemName = (String) jComboBoxEditItem.getSelectedItem();
         int item = 0;
-        
+
         if (itemName.equalsIgnoreCase("ferias")) {
             item = 1;
         } else if (itemName.equalsIgnoreCase("cartao")) {
@@ -655,12 +654,12 @@ public class Screen extends javax.swing.JFrame {
         } else if (itemName.equalsIgnoreCase("despesa")) {
             item = 3;
         }
-        
+
         String edicao = jTextFieldEditFerias.getText();
         double edit = Double.parseDouble(edicao);
-        
+
         DAO dao = new DAO();
-        
+
         try {
             dao.edit(day, month, turn, item, edit);
             JOptionPane.showMessageDialog(rootPane, "Caixa editado com sucesso!");
@@ -669,27 +668,27 @@ public class Screen extends javax.swing.JFrame {
             jComboBoxEditTurn.setSelectedIndex(0);
             jComboBoxEditItem.setSelectedItem(0);
             jTextFieldEditFerias.setText("");
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
     }//GEN-LAST:event_jButtonRegistrarEditActionPerformed
 
     private void jButtonVisuBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisuBuscarActionPerformed
-        
+
         String mes = (String) jComboBoxVisuMes.getSelectedItem();
         int month = Integer.valueOf(mes);
-        
+
         DAO dao = new DAO();
         Cashier cashier = new Cashier();
-        
+
         try {
             for (Cashier c : dao.cashierList(month)) {
                 jTextAreaVisu.setText(jTextAreaVisu.getText() + c.getTurn() + " - " + c.getDay() + " --- " + c.getBilling() + " --- " + c.getSaleCard() + " --- " + c.getExpense() + "\n");
             }
         } catch (IOException ex) {
             Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
     }//GEN-LAST:event_jButtonVisuBuscarActionPerformed
 
     /**
@@ -771,10 +770,10 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldVendaCartão;
     // End of variables declaration//GEN-END:variables
 
-private void setIcon() {
-        String img = "src/resources/logo.png";
+    private void setIcon() {
+        String user = System.getProperty("user.name");
+        String img = "C:\\Users\\"+user+"\\Documents\\MercadoOriente\\logo.png";
         setIconImage(Toolkit.getDefaultToolkit().getImage(img));
     }
 
 }
-

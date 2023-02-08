@@ -17,7 +17,8 @@ import org.apache.poi.ss.usermodel.Row;
 
 public class DAO {
 
-    private static final String fileName = "C:\\Users\\Eduardo\\Documents\\MercadoOriente\\spreadsheet.xls";
+    private static final String user = System.getProperty("user.name");
+    private static final String fileName = "C:\\Users\\"+user+"\\Documents\\MercadoOriente\\spreadsheet.xls";
 
     public void readDaywithTurn(int day, int month, boolean turn) {
 
